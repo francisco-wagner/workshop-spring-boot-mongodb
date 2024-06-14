@@ -33,4 +33,9 @@ public class UserService {
     public User fromDTO(UserDTO objDto) {
         return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
+
+    public void deleteById(String id) {
+        findById(id); //call findById(id) here is justified in order to reuse the RunTimeException.
+        repository.deleteById(id);
+    }
 }
