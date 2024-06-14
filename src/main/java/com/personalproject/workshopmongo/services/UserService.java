@@ -38,4 +38,18 @@ public class UserService {
         findById(id); //call findById(id) here is justified in order to reuse the RunTimeException.
         repository.deleteById(id);
     }
+
+    public User update(User userWithNewData) {
+        User newObjToPersist = findById(userWithNewData.getId());
+        updateData(newObjToPersist, userWithNewData);
+
+        return repository.save(newObjToPersist);
+    }
+
+    public User updateData (User newObjToPersist, User userWithNewData) {
+        newObjToPersist.setName(userWithNewData.getName());
+        newObjToPersist.setEmail(userWithNewData.getEmail());
+
+        return newObjToPersist;
+    }
 }
