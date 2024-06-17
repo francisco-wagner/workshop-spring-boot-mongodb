@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "user")
@@ -15,6 +17,8 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+
+    //private List<Post> posts = new ArrayList<>();
 
 
 
@@ -52,6 +56,11 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /*public List<Post> getPosts() {
+        return posts;
+    }*/
+
 
 
 
