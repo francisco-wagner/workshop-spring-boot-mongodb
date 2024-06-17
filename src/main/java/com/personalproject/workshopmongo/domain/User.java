@@ -1,6 +1,7 @@
 package com.personalproject.workshopmongo.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,8 @@ public class User implements Serializable {
     private String name;
     private String email;
 
-    //private List<Post> posts = new ArrayList<>();
+    @DBRef(lazy = true)
+    private List<Post> posts = new ArrayList<>();
 
 
 
@@ -57,9 +59,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    /*public List<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
-    }*/
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
 
 
 
